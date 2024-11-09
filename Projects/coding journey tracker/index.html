@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journey tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Irish+Grover&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inkut: ["Inknut Antiqua", "system-ui"],
+              inria: ["Inria Serif", "serif"],
+              itim: ["Itim", "cursive"],
+              roboto: ["Roboto", "sans-serif"],
+            },
+          },
+        },
+        plugins: [],
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .scrollbar::-webkit-scrollbar {
+          width: 3px;
+          height: 5px;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+          background: #1c1c1c;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+          background: #323232;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #555; /* Even darker */
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section
+      id="login-section"
+      class="flex-col items-center justify-center w-[80%] mx-auto"
+    >
+      <div></div>
+      <h1
+        id="login-text"
+        class="text-center mt-10 h-10 text-3xl font-bold mb-10"
+      >
+        Login
+      </h1>
+      <form action="" class="max-h-[300px] mb-3">
+        <label for="email" class="w-[90%] py-2 mx-auto block">Email</label>
+        <div
+          class="flex items-center w-[90%] px-2 pb-2 border-b-2 border-b-[grey] mx-auto mb-5"
+        >
+          <i class="fas fa-user text-gray-500"></i
+          ><input
+            id="email"
+            type="text"
+            placeholder="your Email"
+            class="block mx-auto py-2 px-4 focus:outline-none"
+          />
+        </div>
+        <label for="email" class="w-[90%] py-2 mx-auto block">Password</label>
+        <div
+          class="flex items-center w-[90%] px-2 pb-2 border-b-2 border-b-[grey] mx-auto"
+        >
+          <i class="fas fa-lock text-gray-500"></i
+          ><input
+            id="pass"
+            type="text"
+            placeholder="your password"
+            class="block mx-auto py-2 px-4 focus:outline-none"
+          />
+        </div>
+      </form>
+      <div class="text-right" id="forget">
+        <a href="#" class="text-[15px]">Forget Password?</a>
+      </div>
+      <div class="mx-auto w-[90%] mt-16">
+        <button
+          id="log-btn"
+          class="w-[100%] rounded-3xl border-2 border-black h-10 text-[16px] font-semibold bg-black text-white"
+        >
+          LOGIN
+        </button>
+        <button
+          id="sign-btn"
+          class="w-[100%] rounded-3xl border-2 border-black h-10 text-[16px] font-semibold mt-5"
+        >
+          SIGN UP
+        </button>
+      </div>
+    </section>
+    <div class="max-h-screen hidden" id="main-container">
+      <header class="bg-cyan-400 h-100px flex items-center space-x-10">
+        <img src="images/bgc.png" class="w-12 h-12 rounded-full mx-4 my-2" />
+        <h1 class="text-2x font-bold font-inkut">Coding Journal</h1>
+      </header>
+      <main class="max-h-[80vh] overflow-y-scroll scrollbar"></main>
+    </div>
+    <script src="touchTracker.js"></script>
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

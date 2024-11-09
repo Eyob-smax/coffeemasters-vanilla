@@ -1,0 +1,109 @@
+{
+  "folders": [
+	{
+		"name": "Python-Tutorial-Supplementary-Materials",
+		"path": "../../../../Users/Hello/Downloads/Python-Tutorial-Supplementary-Materials"
+	},
+	{
+		"name": "Movie search app",
+		"path": "../../../../Users/Hello/OneDrive/Desktop/Movie search app"
+	},
+	{
+		"name": "eyob code",
+		"path": "../.."
+	},
+	{
+		"name": "HTML",
+		"path": "../../../../Web Code/HTML"
+	},
+	{
+		"name": "Js",
+		"path": "../../../../Web Code/Js"
+	},
+	{
+		"name": "python",
+		"path": "../../../../Web Code/python"
+	},
+	{
+		"name": "all projects",
+		"path": "../../../../Web Code/all projects"
+	},
+	{
+		"name": "CSS",
+		"path": "../../../../Web Code/CSS"
+	},
+	{
+		"name": "course-JS-and-the-DOM",
+		"path": "../../../../Web Code/Js/course-JS-and-the-DOM"
+	},
+	{
+		"name": "Simple Qr code Generator",
+		"path": "../../../../Users/Hello/OneDrive/Desktop/Projects/Simple Qr code Generator"
+	},
+	{
+		"name": "coding journey tracker",
+		"path": "../../../../Users/Hello/OneDrive/Desktop/Projects/coding journey tracker"
+	},
+	{
+		"name": "cpp program",
+		"path": "../../../../Web Code/cpp program"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "eyob code",
+    "liveServer.settings.CustomBrowser": "microsoft-edge",
+    "liveServer.settings.port": 5563,
+    "files.associations": {
+      "array": "cpp",
+      "atomic": "cpp",
+      "bit": "cpp",
+      "*.tcc": "cpp",
+      "cctype": "cpp",
+      "charconv": "cpp",
+      "clocale": "cpp",
+      "cmath": "cpp",
+      "compare": "cpp",
+      "concepts": "cpp",
+      "cstddef": "cpp",
+      "cstdint": "cpp",
+      "cstdio": "cpp",
+      "cstdlib": "cpp",
+      "ctime": "cpp",
+      "cwchar": "cpp",
+      "cwctype": "cpp",
+      "deque": "cpp",
+      "string": "cpp",
+      "unordered_map": "cpp",
+      "vector": "cpp",
+      "exception": "cpp",
+      "algorithm": "cpp",
+      "functional": "cpp",
+      "iterator": "cpp",
+      "memory": "cpp",
+      "memory_resource": "cpp",
+      "numeric": "cpp",
+      "optional": "cpp",
+      "random": "cpp",
+      "string_view": "cpp",
+      "system_error": "cpp",
+      "tuple": "cpp",
+      "type_traits": "cpp",
+      "utility": "cpp",
+      "format": "cpp",
+      "initializer_list": "cpp",
+      "iosfwd": "cpp",
+      "iostream": "cpp",
+      "istream": "cpp",
+      "limits": "cpp",
+      "new": "cpp",
+      "numbers": "cpp",
+      "ostream": "cpp",
+      "span": "cpp",
+      "stdexcept": "cpp",
+      "streambuf": "cpp",
+      "text_encoding": "cpp",
+      "typeinfo": "cpp",
+      "variant": "cpp"
+    }
+  }
+}

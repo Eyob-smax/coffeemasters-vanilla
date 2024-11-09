@@ -1,0 +1,274 @@
+// DOM Element Selectors
+const menuSection = document.querySelector(".menu-section");
+const menuButton = document.querySelector("#menu-btn");
+const aboutButton = document.querySelector("#about");
+const aboutSection = document.querySelector(".about-section");
+const homeSection = document.querySelector(".home");
+const homeButton = document.querySelector("#home");
+const testimonialsButton = document.querySelector("#testimonials");
+const testimonialsSection = document.querySelector(".testimonials-section");
+const homeStartButton = document.querySelector(".home-start-btn");
+const preferenceSection = document.querySelector(".select-preference");
+const startQuizButton = document.querySelector("#start-quiz");
+const mainContent = document.querySelector(".main");
+const backButton = document.querySelector("#back-btn");
+const nextButton = mainContent.querySelector("#next-btn");
+const prevButton = mainContent.querySelector("#prev-btn");
+const categoryDisplay = mainContent.querySelector("#category-type");
+const scoreDisplay = document.querySelector("#current-score");
+const totalQuestionDisplay = document.querySelector("#total-question");
+const answerContainer = mainContent.querySelector(".answers");
+const questionText = mainContent.querySelector("#question-text");
+const questionNumberDisplay = mainContent.querySelector("#current-question-index");
+const timerBar = document.querySelector(".timer-bar");
+const timeSlap = document.querySelector(".timer-text");
+
+// Quiz Data
+const questionsArry = [
+  {
+    category: "Logic",
+    question: "The word philosophy is first originated from__________.",
+    answers: [
+      { text: "Aristotle", correct: true },
+      { text: "Veencent berry", correct: false },
+      { text: "Socrates", correct: false },
+      { text: "sigmund fraud", correct: false },
+    ],
+  },
+  {
+    category: "Logic",
+    question:
+      "Which field of philosophy deals with the nature of realityor existence?(𝑚𝑖𝑑 𝑒𝑥𝑎𝑚)",
+    answers: [
+      { text: "Meta physics", correct: true },
+      { text: "Epistemmology", correct: false },
+      { text: "Axiology", correct: false },
+      { text: "Logic", correct: false },
+    ],
+  },
+  {
+    category: "Logic",
+    question:
+      "The clarification and analysis of terms and statements is the objective of philosophy in general and logic in particular.(𝑓𝑖𝑛𝑎𝑙 𝑒𝑥𝑎𝑚𝑠)",
+    answers: [
+      { text: "True", correct: true },
+      { text: "False", correct: false },
+    ],
+  },
+  {
+    category: "Logic",
+    question:
+      "'Viruses are a cellular entities too small to be seen with a light microscope. They are composed of a nucleic acid and a few proteins. Viruses replicate themselves and display other properties of living organisms only when they have invaded living cells. Indeed, some viruses can be crystallized and stored in a container on a shelf for years, but they retain the capacity to invade cells and cause disease' this statement is a type of:",
+    answers: [
+      { text: "Argument", correct: false },
+      { text: "Expository", correct: true },
+      { text: "Illustritive", correct: false },
+      { text: "Explanation", correct: false },
+    ],
+  },
+  {
+    category: "Logic",
+    question: "A stipulative definition can be either true or false",
+    answers: [
+      { text: "True", correct: false },
+      { text: "False", correct: true },
+    ],
+  },
+  {
+    category: "Logic",
+    question:
+      "Gravity means a force that results from the universal attraction that every particle of matter has for every other particle, and which varies directly with the mass of the particles and inversely with thesquare of the distance between them.",
+    answers: [
+      { text: "Precising", correct: false },
+      { text: "Theoretical", correct: true },
+      { text: "Stipulative", correct: false },
+      { text: "Persuasive", correct: false },
+    ],
+  },
+  {
+    category: "psychology",
+    question:
+      "Identify the fallacy in the following statement: Nobody has been able to prove that ghosts don't exist, so they must exist.(from final exams)",
+    answers: [
+      { text: "Appeal to pity", correct: false },
+      { text: "Appeal to ignorance", correct: true },
+      { text: "Appeal to people", correct: false },
+      { text: "Appeal to force", correct: false },
+    ],
+  },
+  {
+    category: "psychology",
+    question:
+      "Identify the fallacy in the following statement: Proponents of climate change simply want us to stop driving cars and start living in caves.",
+    answers: [
+      { text: "Straw man", correct: true },
+      { text: "Post hoc", correct: false },
+      { text: "False dichotomy", correct: false },
+      { text: "Missing the point", correct: false },
+    ],
+  },
+  {
+    category: "psychology",
+    question:
+      "All of us cant be famous, because all of us can't be well known. Thi statement commits a fallcy of:",
+    answers: [
+      { text: "Ad hominem", correct: false },
+      { text: "False cause", correct: false },
+      { text: "Begging the question", correct: true },
+      { text: "Red herring", correct: false },
+    ],
+  },
+  {
+    category: "Logic",
+    question:
+      "God exists because the Bible says so, and the Bible is the word of God. This statement is an example of which fallacy?",
+    answers: [
+      { text: "To quoque", correct: false },
+      { text: "Unqualified authority", correct: false },
+      { text: "Bandwagon", correct: false },
+      { text: "Appeal to force", correct: false },
+      { text: "Begging the question", correct: true },
+    ],
+  },
+];
+
+// Initial State
+let questionIndex = 0;
+let score = 0;
+let selectedTime = document.querySelector("#timePerQuestion").value;
+
+// Event Listeners
+menuButton.addEventListener("click", toggleMenu);
+window.addEventListener("click", closeMenuOnClickOutside);
+homeButton.addEventListener("click", () => displaySection(homeSection));
+aboutButton.addEventListener("click", () => displaySection(aboutSection));
+homeStartButton.addEventListener("click", () => displaySection(preferenceSection));
+startQuizButton.addEventListener("click", startQuiz);
+backButton.addEventListener("click", goBackToPreference);
+nextButton.addEventListener("click", displayNextQuestion);
+prevButton.addEventListener("click", displayPreviousQuestion);
+window.addEventListener("submit", function (event){
+  event.preventDefault();
+  console.log("My name is eyoba!")
+})
+
+// Function to Toggle Menu
+function toggleMenu() {
+  const isMenuOpen = menuSection.style.width === "70%";
+  menuSection.style.width = isMenuOpen ? "0" : "70%";
+}
+
+// Function to Close Menu on Outside Click
+function closeMenuOnClickOutside(e) {
+  if (!menuSection.contains(e.target) && e.target !== menuButton) {
+    menuSection.style.width = "0%";
+  }
+}
+
+// Function to Display Selected Section
+function displaySection(section) {
+  [homeSection, aboutSection, preferenceSection, mainContent].forEach(sec => sec.style.display = "none");
+  section.style.display = "flex";
+  menuSection.style.width = "0";
+}
+
+// Function to Start Quiz
+function startQuiz() {
+  mainContent.style.display = "flex";
+  preferenceSection.style.display = "none";
+  homeSection.style.display = "none";
+  displayFirstQuestion();
+}
+
+// Function to Display First Question
+function displayFirstQuestion() {
+  resetState();
+  updatePreference();
+  loadQuestion(questionIndex);
+  prevButton.style.display = "none";
+}
+
+// Function to Display Next Question
+function displayNextQuestion() {
+  if (questionIndex <questionsArry.length - 1) {
+    questionIndex++;
+    loadQuestion(questionIndex);
+    prevButton.style.display = "block";
+  } else {
+    nextButton.style.display = "none";
+  }
+}
+
+// Function to Display Previous Question
+function displayPreviousQuestion() {
+  if (questionIndex > 0) {
+    questionIndex--;
+    loadQuestion(questionIndex);
+    nextButton.style.display = "block";
+  }
+  if (questionIndex === 0) {
+    prevButton.style.display = "none";
+  }
+}
+
+// Function to Load and Display Question
+function loadQuestion(index) {
+  resetState();
+  const currentQuestion = questionsArry[index];
+  categoryDisplay.textContent = currentQuestion.category;
+  questionText.textContent = `${index + 1}. ${currentQuestion.question}`;
+  currentQuestion.answers.forEach(answer => createAnswerButton(answer));
+}
+
+// Function to Create Answer Button
+function createAnswerButton(answer) {
+  const button = document.createElement("button");
+  button.classList.add("answer");
+  button.textContent = answer.text;
+  if (answer.correct) {
+    button.dataset.correct = answer.correct;
+  }
+  button.addEventListener("click", selectAnswer);
+  answerContainer.appendChild(button);
+}
+
+
+
+// Function to Handle Answer Selection
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const isCorrect = selectedButton.dataset.correct === "true";
+  selectedButton.style.backgroundColor = isCorrect ? "#34f03d" : "#fb5e15";
+  if (isCorrect) score++;
+  Array.from(answerContainer.children).forEach(button => {
+    if (button.dataset.correct) button.style.backgroundColor = "#34f03d";
+    button.disabled = true;
+  });
+  scoreDisplay.textContent = score;
+}
+
+// Function to Reset Quiz State
+function resetState() {
+  while (answerContainer.firstChild) {
+    answerContainer.removeChild(answerContainer.firstChild);
+  }
+}
+
+// Function to Update Preference Display
+function updatePreference() {
+  totalQuestionDisplay.textContent = document.querySelector("#num-questions").value;
+}
+
+// Function to Go Back to Preference Sectionf
+function goBackToPreference() {
+  mainContent.style.display = "none";
+  preferenceSection.style.display = "flex";
+}
+
+// Function to Calculate and Display Timer
+function calculateTime() {
+  timerBar.style.width = `${selectedTime}%`;
+  timeSlap.textContent = selectedTime;
+  selectedTime = ""
+}
+calculateTime()

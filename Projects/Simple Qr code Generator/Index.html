@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy QR Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Irish+Grover&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              irish: ["Irish Grover", "system-ui"],
+              inria: ["Inria Serif", "serif"],
+            },
+          },
+        },
+        plugins: [],
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .scrollbar::-webkit-scrollbar {
+          width: 3px;
+          height: 5px;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+          background: #1c1c1c;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+          background: #323232;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #555; /* Even darker */
+        }
+      }
+    </style>
+  </head>
+  <body class="flex justify-center items-center h-screen">
+    <div
+      class="w-[550px] px-4 py-6 pt-9 max-h-[500px] shadow-lg shadow-slate-500 rounded-md"
+    >
+      <div class="flex justify-evenly space-x-10">
+        <input
+          type="text"
+          id="in-btn"
+          class="border-2 rounded-lg w-72 px-6"
+          placeholder="Enter the link"
+        />
+        <button
+          class="font-irish px-4 py-2 rounded-lg bg-gradient-to-tr from-pink-500 to-purple-500 duration-200 hover:from-purple-800 hover:to-pink-800"
+          id="gen-btn"
+        >
+          Generate
+        </button>
+      </div>
+      <div class="w-full max-h-0" id="img-container">
+        <img src="" class="mx-auto mt-5 p-2" />
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
